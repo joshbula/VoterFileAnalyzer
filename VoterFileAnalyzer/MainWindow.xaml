@@ -1,0 +1,81 @@
+﻿<Window x:Class="VoterFileAnalyzer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VoterFileAnalyzer"
+        mc:Ignorable="d"
+        Title="Voter File Analyzer" Height="500" Width="700">
+    <Grid>
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <!--<ColumnDefinition Width="*" />-->
+        </Grid.ColumnDefinitions>
+
+        <Menu Grid.ColumnSpan="2">
+            <MenuItem Header="File">
+                <MenuItem Name="MenuExit" Header="Exit" Click="MenuExit_Click" />
+            </MenuItem>
+        </Menu>
+        <TabControl Grid.Row="1" Name="tcMain" SelectionChanged="tcMain_SelectionChanged">
+            <TabItem Header="Files and Folders">
+                <StackPanel>
+
+                    <TextBlock Text="Membership File" FontWeight="Bold" Margin="0,10,0,0"></TextBlock>
+                    <TextBlock Name="lblMemberFile" Text="Select an excel spreadsheet (.xlsx) with your organization's membership list. It should have First Name, Last Name, and City." TextWrapping="Wrap"></TextBlock>
+
+                    <Button Content="Select File" Name="btnSelectMembershipFile" Click="btnSelectMembershipFile_Click" Height="30" Width="80" HorizontalAlignment="Left"/>
+                    <TextBlock Name="lblMembershipFilePath" Text="select a file"></TextBlock>
+
+
+
+                    <TextBlock Text="Voter Extract" FontWeight="Bold" Margin="0,10,0,0"></TextBlock>
+                    <TextBlock Name="lblVoterExtract" Text="Select the folder on your computer with the Florida Voter File Voter Extract files" TextWrapping="Wrap" />
+
+                    <Button Content="Select Folder" x:Name="btnSelectVoterExtract" Click="btnSelectVoterExtract_Click" Height="30" Width="80" HorizontalAlignment="Left" />
+                    <TextBlock x:Name="lblVoterExtractPath" Text="select folder..."/>
+
+
+
+                    <TextBlock Text="Voter History" FontWeight="Bold" Margin="0,10,0,0"></TextBlock>
+                    <TextBlock Name="lblVoterHistory" Text="Select the folder on your computer with the Florida Voter File Voter History files" TextWrapping="Wrap" />
+
+                    <Button Content="Select Folder" x:Name="btnSelectVoterHistory" Click="btnSelectVoterHistory_Click" Height="30" Width="80" HorizontalAlignment="Left" />
+                    <TextBlock x:Name="lblVoterHistoryPath" Text="select folder..."/>
+
+
+
+                    <Button Grid.Row="4" Width="150" Height="60" Name="btnImportFiles" Click="btnImportFiles_Click" Content="Import Files" />
+
+                    <TextBlock Name="lblStatus" Text="status"></TextBlock>
+                </StackPanel>
+
+            </TabItem>
+
+            <TabItem Header="Members">
+
+                <StackPanel>
+                    <TextBox Name="lblMembersCount" FontWeight="Bold" Text="Total Members:"></TextBox>
+                    <TextBox Name="MemberCountTextBox"></TextBox>
+
+                    <TextBox Name="lblRegisteredVoters" FontWeight="Bold" Text="Registered Voters:"></TextBox>
+                    <TextBox Name="RegisteredVotersTextBox"></TextBox>
+                </StackPanel>
+               
+            </TabItem>
+
+            <TabItem Header="Reports">
+            </TabItem>
+
+
+        </TabControl>
+
+        <TextBlock Name="lblReportErrors" Foreground="Red"></TextBlock>
+    </Grid>
+</Window>
