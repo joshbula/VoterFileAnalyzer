@@ -4,6 +4,7 @@ using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -41,6 +42,8 @@ namespace VoterFileAnalyzer
         {
             InitializeComponent();
         }
+        #region Controls
+
 
         private void MenuExit_Click(object sender, RoutedEventArgs e)
         {
@@ -85,29 +88,41 @@ namespace VoterFileAnalyzer
             }
         }
 
+
+        private void tcMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CheckIfAllFilesComplete();
+        }
+
+        #endregion
+
         private async void btnImportFiles_Click(object sender, RoutedEventArgs e)
         {
             if (CheckIfAllFilesComplete())
             {
-                btnImportFiles.Content = "Importing...";
-                btnImportFiles.IsEnabled = false;
+                var progressIndicator = new Progress<string>(ReportProgress);
 
-                MemberCount = ImportMembers();
-                ImportVoters();
-                ImportHistory();
-                tcMain.SelectedIndex = 1;
+                int importedMembers = await ImportMembers(progressIndicator);
+
+
+
+
+
+            }
+            else
+            {
+                tbStatus.Text = "File or Folders missing! Use the buttons to to select everything.";
             }
 
 
         }
 
+
         private bool CheckIfAllFilesComplete()
         {
-            return true;
-
             lblReportErrors.Text = "";
 
-            if (MembershipExcelFilePath != "" && VoterExtractFolderPath != "" && VoterHistoryFolderPath != "")
+            if (MembershipExcelFilePath != "" && VoterExtractFolderPath != "")// && VoterHistoryFolderPath != "")
             {
                 return true;
             }
@@ -126,104 +141,204 @@ namespace VoterFileAnalyzer
             }
         }
 
-        private void tcMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            CheckIfAllFilesComplete();
-        }
-
 
         #region HelperFunctions
 
 
 
 
-        private int ImportMembers()
+        async Task<int> ImportMembers(IProgress<string> progress)
         {
             FileStream stream = File.Open(MembershipExcelFilePath, FileMode.Open, FileAccess.Read);
             IExcelDataReader excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
             excelReader.IsFirstRowAsColumnNames = true;
             DataSet ds = excelReader.AsDataSet();
 
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-            {
-                var member = new Member();
-                DataRow row = ds.Tables[0].Rows[i];
 
-                member.MemberID = Convert.ToInt32(row[0]);
-                member.FirstName = row["FirstName"].ToString();
-                member.LastName = row["LastName"].ToString();
-                member.HomeCounty = row["HomeCounty"].ToString();
-                member.HomeCity = row["HomeCity"].ToString();
-                member.HomeEmail = row["HomeEmail"].ToString();
-                member.TotalVotes = 0;
-
-                Members.Add(member);
-            }
+            int processCount = await Task.Run<int>(() =>
+           {
+               int tempCount = 0;
 
 
+               for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+               {
+                   var member = new Member();
+                   DataRow row = ds.Tables[0].Rows[i];
+
+                   member.FMEAID = Convert.ToInt32(row[0]);
+                   member.FirstName = row["FirstName"].ToString();
+                   member.LastName = row["LastName"].ToString();
+                   member.HomeCounty = row["HomeCounty"].ToString();
+                   member.HomeCity = row["HomeCity"].ToString();
+                   member.HomeEmail = row["HomeEmail"].ToString();
+                   member.TotalVotes = 0;
+                   member.LastElection = null;
+                   Members.Add(member);
+                   //db.SaveChanges();
+                   if (progress != null)
+                   {
+                       progress.Report("Importing Members: " + tempCount.ToString());
+                   }
+                   tempCount++;
+
+
+
+               }
+
+
+
+               //Get VoterExtract Info
+
+               string[] extractFiles = Directory.GetFiles(VoterExtractFolderPath);
+
+               foreach (var file in extractFiles)
+               {
+
+                   string filename = System.IO.Path.GetFileName(file);
+
+                   using (TextReader tr = File.OpenText(file))
+                   {
+                       string line;
+                       while ((line = tr.ReadLine()) != null)
+                       {
+                           string[] fields = line.Split('\t');
+
+                           string FirstName = fields[4];
+                           string LastName = fields[2];
+                           string HomeCity = fields[9];
+
+                           var member = Members.Where(p => p.FirstName == FirstName && p.LastName == LastName && p.HomeCity == HomeCity).OrderByDescending(p => p.MemberID).FirstOrDefault();
+                           if (member != null)
+                           {
+                               member.VoterID = Convert.ToInt32(fields[1]);
+                               member.RegisteredTovote = fields[28] == "ACT" ? true : false;
+                               member.Party = fields[23];
+                               //db.SaveChanges();
+                               if (progress != null)
+                               {
+                                   progress.Report("Found Voter in " + filename + " - \n" + member.FirstName + " " + member.LastName);
+                               }
+                           }
+
+                       }
+
+                   }
+
+               }
+
+
+               //Get VoterHistory
+
+               string[] historyFiles = Directory.GetFiles(VoterHistoryFolderPath);
+
+               foreach (var file in historyFiles)
+               {
+                   string filename = System.IO.Path.GetFileName(file);
+
+                   using (TextReader tr = File.OpenText(file))
+                   {
+                       string line;
+                       while ((line = tr.ReadLine()) != null)
+                       {
+                           string[] fields = line.Split('\t');
+
+                           int voterId = Convert.ToInt32(fields[1]);
+                           DateTime ElectionDate = Convert.ToDateTime(fields[2]);
+                           string ElectionType = fields[3];
+                           string VoteType = fields[4];
+
+
+                           var member = Members.Where(p => p.VoterID == voterId).OrderByDescending(p => p.MemberID).FirstOrDefault();
+                           if (member != null)
+                           {
+                               member.TotalVotes += 1;
+
+                               if (member.FirstElection == null || member.FirstElection > ElectionDate)
+                               {
+                                   member.FirstElection = ElectionDate;
+                               }
+
+                               if (member.LastElection == null || member.LastElection < ElectionDate)
+                               {
+                                   member.LastElection = ElectionDate;
+                               }
+
+                               var vote = new Vote()
+                               {
+                                   VoterID = voterId,
+                                   ElectionDate = ElectionDate,
+                                   ElectionType = ElectionType,
+                                   VoteType = VoteType
+                               };
+
+                               Votes.Add(vote);
+
+                               
+                               //db.SaveChanges();
+                               if (progress != null)
+                               {
+                                   progress.Report("Loading History: " + filename + " - \n" + member.FirstName + " " + member.LastName);
+                               }
+                           }
+
+                       }
+
+                   }
+               }
+
+
+
+               using (var db = new VoterFileContext())
+               {
+                   
+                   db.Database.ExecuteSqlCommand("DELETE FROM Members");
+                   int i = 0;
+                   foreach (var member in Members)
+                   {
+                       progress.Report("Saving to Database " + i.ToString());
+                       db.Members.Add(member);
+                       db.SaveChanges();
+                       var votes = Votes.Where(p => p.VoterID == member.VoterID);
+                       foreach (var vote in votes)
+                       {
+                           vote.MemberID = member.MemberID;
+                           db.Votes.Add(vote);
+                           db.SaveChanges();
+                       }
+
+                       i++;
+
+                   }
+
+               }//end using
+
+               progress.Report("Finished!");
+
+               return tempCount;
+           });
+
+
+
+            Debug.WriteLine("Finished importing Membership List");
 
             ds.Dispose();
             excelReader.Close();
             // dgMembers.ItemsSource = Members;
-            return Members.Count();
-
+            return processCount;
 
         }
 
-        private async void ImportVoters()
+
+        void ReportProgress(string Value)
         {
-            int RegisteredVoters = 0;
-
-            string[] files = Directory.GetFiles(VoterExtractFolderPath);
-
-            foreach (var file in files)
-            {
-               
-                await Task.Run(() =>
-                {
-                    using (TextReader tr = File.OpenText(file))
-                    {
-                        string line;
-                        while ((line = tr.ReadLine()) != null)
-                        {
-                            string[] fields = line.Split('\t');
-
-                            string FirstName = fields[4];
-                            string LastName = fields[2];
-                            string HomeCity = fields[9];
-
-                            var member = Members.Where(p => p.FirstName == FirstName && p.LastName == LastName && p.HomeCity == HomeCity).OrderByDescending(p => p.MemberID).FirstOrDefault();
-                            if (member != null)
-                            {
-                                member.VoterID = Convert.ToInt32(fields[1]);
-                                member.RegisteredTovote = fields[28] == "ACT" ? true : false;
-                                member.Party = fields[23];
-
-                                if (fields[28] == "ACT")
-                                    RegisteredVoters += 0;
-                            }
-
-                        }
-
-                    }
-
-                });
-                lblStatus.Text = "Reading " + file + "  So far, found " + RegisteredVoters.ToString() + " members who are registered.";
-                RegisteredVotersTextBox.Text = RegisteredVoters.ToString();
-            }
-
-           
-
+            btnImportFiles.Content = "Importing...";
+            btnImportFiles.IsEnabled = false;
+            tbStatus.Text = Value;
         }
-
-        private void ImportHistory()
-        {
-
-        }
-
 
         #endregion
 
 
     }
 }
+

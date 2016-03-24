@@ -8,7 +8,8 @@ namespace VoterFileAnalyzer
 {
     public class Member
     {
-        public int MemberID { get; set; } //FMEAID
+        public int MemberID { get; set; } 
+        public int FMEAID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string HomeCounty { get; set; }
@@ -16,10 +17,10 @@ namespace VoterFileAnalyzer
         public string HomeEmail { get; set; }
         public bool RegisteredTovote { get; set; }
         public string Party { get; set; }
-        public int VoterID { get; set; }
-        public int TotalVotes { get; set; }
-        public DateTime FirstElection { get; set; }
-        public DateTime LastElection { get; set; }
+        public int? VoterID { get; set; }
+        public int? TotalVotes { get; set; }
+        public DateTime? FirstElection { get; set; }
+        public DateTime? LastElection { get; set; }
 
         public virtual ICollection<Vote> Votes { get; set; }
     }

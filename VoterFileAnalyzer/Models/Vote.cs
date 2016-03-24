@@ -8,6 +8,7 @@ namespace VoterFileAnalyzer
 {
     public class Vote
     {
+        public int Id { get; set; }
         public int VoterID { get; set; }
 
         public DateTime ElectionDate { get; set; }

@@ -15,6 +15,7 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="200" />
             <!--<ColumnDefinition Width="*" />-->
         </Grid.ColumnDefinitions>
 
@@ -77,5 +78,7 @@
         </TabControl>
 
         <TextBlock Name="lblReportErrors" Foreground="Red"></TextBlock>
+
+        <TextBox Name="tbStatus" Grid.Column="1" Grid.Row="1"  Text="Status"></TextBox>
     </Grid>
 </Window>
