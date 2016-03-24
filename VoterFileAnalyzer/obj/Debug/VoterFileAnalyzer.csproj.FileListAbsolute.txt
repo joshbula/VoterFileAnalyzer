@@ -25,3 +25,7 @@ E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\EntityFramework.SqlServe
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\VoterFileAnalyzer.Migrations.Initial.resources
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\VoterFileAnalyzer.csprojResolveAssemblyReference.cache
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\VoterFileAnalyzer.Migrations.nullablefields.resources
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\ImportPage.g.cs
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\ImportPage.baml
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\MainPage.g.cs
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\MainPage.baml
