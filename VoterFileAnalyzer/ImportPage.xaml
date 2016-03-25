@@ -26,10 +26,10 @@
             <TextBlock Name="lblReportErrors" Foreground="Red"></TextBlock>
             
             <TextBlock Text="Membership File" FontWeight="Bold" Margin="0,10,0,0"></TextBlock>
-            <TextBlock Name="lblMemberFile" Text="Select an excel spreadsheet (.xlsx) with your organization's membership list. It should have First Name, Last Name, and City." TextWrapping="Wrap"></TextBlock>
+            <TextBlock Name="lblMemberFile" Text="Select an excel spreadsheet (.xlsx) with your organization's membership list. It should start with an ID column and also include columns named FirstName, LastName, HomeCity, HomeCounty, HomeEmail" TextWrapping="Wrap"></TextBlock>
 
             <Button Content="Select File" Name="btnSelectMembershipFile" Click="btnSelectMembershipFile_Click" Height="30" Width="80" HorizontalAlignment="Left"/>
-            <TextBlock Name="lblMembershipFilePath" Text="select a file"></TextBlock>
+            <TextBlock Name="lblMembershipFilePath"></TextBlock>
 
 
 
@@ -37,14 +37,14 @@
             <TextBlock Name="lblVoterExtract" Text="Select the folder on your computer with the Florida Voter File Voter Extract files" TextWrapping="Wrap" />
 
             <Button Content="Select Folder" x:Name="btnSelectVoterExtract" Click="btnSelectVoterExtract_Click" Height="30" Width="80" HorizontalAlignment="Left" />
-            <TextBlock x:Name="lblVoterExtractPath" Text="select folder..."/>
+            <TextBlock x:Name="lblVoterExtractPath" />
 
 
             <TextBlock Text="Voter History" FontWeight="Bold" Margin="0,10,0,0"></TextBlock>
             <TextBlock Name="lblVoterHistory" Text="Select the folder on your computer with the Florida Voter File Voter History files" TextWrapping="Wrap" />
 
             <Button Content="Select Folder" x:Name="btnSelectVoterHistory" Click="btnSelectVoterHistory_Click" Height="30" Width="80" HorizontalAlignment="Left" />
-            <TextBlock x:Name="lblVoterHistoryPath" Text="select folder..."/>
+            <TextBlock x:Name="lblVoterHistoryPath" />
 
 
 

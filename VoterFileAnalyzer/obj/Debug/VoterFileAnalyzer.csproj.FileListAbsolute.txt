@@ -23,7 +23,6 @@ E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\EntityFramework.SqlServe
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\EntityFramework.xml
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\EntityFramework.SqlServer.xml
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\VoterFileAnalyzer.Migrations.Initial.resources
-E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\VoterFileAnalyzer.csprojResolveAssemblyReference.cache
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\VoterFileAnalyzer.Migrations.nullablefields.resources
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\ImportPage.g.cs
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\ImportPage.baml
@@ -31,3 +30,10 @@ E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\MainPage.g.cs
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\MainPage.baml
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\EPPlus.dll
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\EPPlus.xml
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\ReportViewerPage.g.cs
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Microsoft.ReportViewer.Common.dll
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Microsoft.ReportViewer.WinForms.xml
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\ReportViewerPage.baml
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\RdlCompile.cache
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\RdlCompile.compiled

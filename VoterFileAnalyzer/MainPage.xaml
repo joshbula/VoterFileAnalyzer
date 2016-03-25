@@ -6,15 +6,31 @@
       xmlns:local="clr-namespace:VoterFileAnalyzer"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="Voter File Analyzer - MainPage">
+      Title="Voter File Analyzer - MainPage"
+      Background="White">
 
     <Grid>
-        <StackPanel Background="White">
-            <TextBlock Text="Florida Voter File Analyzer" FontSize="18"></TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="200" />
+            <!--<ColumnDefinition Width="*" />-->
+        </Grid.ColumnDefinitions>
+
+
+        <TextBlock Text="Florida Voter File Analyzer" FontSize="18" Grid.ColumnSpan="2"></TextBlock>
+
+        <StackPanel Grid.Row="1">
             <Button Name="Import" Content="Import Data" Click="Import_Click" Width="100" Height="30" Margin="0,0,0,10" HorizontalAlignment="Left"></Button>
             <Button Name="Export" Content="Export to Excel" Click="Export_Click" Width="100" Height="30" Margin="0,0,0,10" HorizontalAlignment="Left"></Button>
-            
+            <Button Name="AllMembers" Content="All Members" Click="AllMembers_Click"  Width="100" Height="30" Margin="0,0,0,10" HorizontalAlignment="Left"></Button>
+            <Button Name="AllByCounty" Content="All Members" Click="AllByCounty_Click" Width="100" Height="30" Margin="0,0,0,10" HorizontalAlignment="Left"></Button>
         </StackPanel>
-       
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <TextBlock Name="MemberCountTextBlock"></TextBlock>
+        </StackPanel>
     </Grid>
 </Page>
