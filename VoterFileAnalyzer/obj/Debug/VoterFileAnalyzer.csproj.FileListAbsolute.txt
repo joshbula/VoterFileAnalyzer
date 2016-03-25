@@ -29,3 +29,5 @@ E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\ImportPage.g.cs
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\ImportPage.baml
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\MainPage.g.cs
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\MainPage.baml
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\EPPlus.dll
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\EPPlus.xml
