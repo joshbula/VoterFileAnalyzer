@@ -66,6 +66,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -90,10 +91,30 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helpers\DataFunctions.cs" />
+    <Compile Include="Migrations\201603281456016_Initial.cs" />
+    <Compile Include="Migrations\201603281456016_Initial.Designer.cs">
+      <DependentUpon>201603281456016_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Reports\Counties.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Counties.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\Members.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Members.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\MembersByParty.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MembersByParty.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\VotesByCounty.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VotesByCounty.xsd</DependentUpon>
     </Compile>
     <Compile Include="ReportViewerPage.xaml.cs">
       <DependentUpon>ReportViewerPage.xaml</DependentUpon>
@@ -131,15 +152,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201603241458395_Initial.cs" />
-    <Compile Include="Migrations\201603241458395_Initial.Designer.cs">
-      <DependentUpon>201603241458395_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603241607086_nullablefields.cs" />
-    <Compile Include="Migrations\201603241607086_nullablefields.Designer.cs">
-      <DependentUpon>201603241607086_nullablefields.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\VoterFileContext.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Vote.cs" />
@@ -156,24 +168,36 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201603241458395_Initial.resx">
-      <DependentUpon>201603241458395_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603241607086_nullablefields.resx">
-      <DependentUpon>201603241607086_nullablefields.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603281456016_Initial.resx">
+      <DependentUpon>201603281456016_Initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Counties.rdlc" />
+    <EmbeddedResource Include="Reports\CountySummary.rdlc" />
     <EmbeddedResource Include="Reports\GroupedByCounty.rdlc" />
     <EmbeddedResource Include="Reports\AllMembers.rdlc" />
+    <EmbeddedResource Include="Reports\MembersByParty.rdlc" />
+    <EmbeddedResource Include="Reports\VotesByCounty.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Reports\Counties.xsc">
+      <DependentUpon>Counties.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\Counties.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Counties.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\Counties.xss">
+      <DependentUpon>Counties.xsd</DependentUpon>
+    </None>
     <None Include="Reports\Members.xsc">
       <DependentUpon>Members.xsd</DependentUpon>
     </None>
@@ -184,6 +208,28 @@
     </None>
     <None Include="Reports\Members.xss">
       <DependentUpon>Members.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\MembersByParty.xsc">
+      <DependentUpon>MembersByParty.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\MembersByParty.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MembersByParty.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\MembersByParty.xss">
+      <DependentUpon>MembersByParty.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\VotesByCounty.xsc">
+      <DependentUpon>VotesByCounty.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\VotesByCounty.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>VotesByCounty.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\VotesByCounty.xss">
+      <DependentUpon>VotesByCounty.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

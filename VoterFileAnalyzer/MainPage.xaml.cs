@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,10 @@ namespace VoterFileAnalyzer
         {
             InitializeComponent();
 
+            cbElectionDate.ItemsSource = ((IListSource)DataFunctions.ElectionDates()).GetList();
+
+            ElectionCountySummary.Visibility = Visibility.Hidden;//hide until something is selected from the combobox
+
             using (var db = new VoterFileContext())
             {
                 int Members = db.Members.Count();
@@ -39,7 +44,18 @@ namespace VoterFileAnalyzer
                 {
                     int RegisteredVoters = db.Members.Where(p => p.RegisteredTovote == true).Count();
                     int HasVoted = db.Members.Where(p => p.TotalVotes > 0).Count();
+
                     MemberCountTextBlock.Text = "Members: " + Members.ToString() + "\nRegistered To Vote: " + RegisteredVoters.ToString() + "\nMembers Who Have Voted: " + HasVoted.ToString();
+                    MemberCountTextBlock.Text += "\n";
+                    double PercentRegistered = 0.00;
+                    double PercentHasVoted = 0.00;
+                    PercentRegistered = Convert.ToDouble(RegisteredVoters) / Convert.ToDouble(Members);
+                    PercentHasVoted = Convert.ToDouble(HasVoted) / Convert.ToDouble(Members);
+
+                    MemberCountTextBlock.Text += String.Format("{0:P2}", PercentRegistered) + " of your membership is registered to vote. \n";
+                    MemberCountTextBlock.Text += String.Format("{0:P2}", PercentHasVoted) + " of your membership has voted in a past election.\n\n";
+
+
                 }
 
             }
@@ -76,13 +92,43 @@ namespace VoterFileAnalyzer
 
         private void AllMembers_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new ReportViewerPage("AllMembers.rdlc"));
+            this.NavigationService.Navigate(new ReportViewerPage("AllMembers.rdlc", DataFunctions.GetMembers(), "Members"));
 
         }
 
         private void AllByCounty_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new ReportViewerPage("GroupedByCounty.rdlc"));
+            this.NavigationService.Navigate(new ReportViewerPage("GroupedByCounty.rdlc", DataFunctions.GetMembers(), "Members"));
+        }
+
+        private void CountySummary_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new ReportViewerPage("Counties.rdlc", DataFunctions.VotersByCounty(), "Counties"));
+        }
+
+        private void cbElectionDate_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            ElectionCountySummary.Visibility = Visibility.Visible;
+            DateTime ElectionDate = Convert.ToDateTime(cbElectionDate.SelectedValue);
+            using (var db = new VoterFileContext())
+            {
+                int VoteCount = db.Votes.Where(p => p.ElectionDate == ElectionDate).Count();
+                ElectionCountTextBlock.Text = VoteCount.ToString() + " members voted in the election on " + String.Format("{0:d}", ElectionDate) + ".";
+            }
+
+
+        }
+
+        private void ElectionCountySummary_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime ElectionDate = Convert.ToDateTime(cbElectionDate.SelectedValue);
+            this.NavigationService.Navigate(new ReportViewerPage("VotesByCounty.rdlc", DataFunctions.VotesByCounty(ElectionDate), "VotesByCounty", string.Format("{0:d}", ElectionDate)));
+        }
+
+        private void MembersByParty_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new ReportViewerPage("MembersByParty.rdlc", DataFunctions.MembersByParty(), "MembersByParty"));
         }
     }
 }

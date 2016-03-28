@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,37 +15,96 @@ namespace VoterFileAnalyzer
             DataSet ds = new DataSet();
             DataTable dt = ds.Tables.Add("Members");
 
-            using (var db = new VoterFileContext())
-            {
-               
-                string[] columns = typeof(Member).GetProperties().Select(p => p.Name).ToArray();
-                foreach (var column in columns)
-                {
-                    dt.Columns.Add(column);
-                }
+            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["VoterFileConnection"].ConnectionString);
+            SqlCommand cmd = new SqlCommand("Select * FROM Members", conn);
+            conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            conn.Close();
+            da.Dispose();
 
-                var Members = db.Members.OrderBy(p => p.LastName);
-                foreach (var m in Members)
-                {
-                    DataRow r = dt.NewRow();
-                    r["FMEAID"] = m.FMEAID;
-                    r["FirstName"] = m.FirstName;
-                    r["LastName"] = m.LastName;
-                    r["HomeCounty"] = m.HomeCounty;
-                    r["HomeCity"] = m.HomeCity;
-                    r["HomeEmail"] = m.HomeEmail;
-                    r["RegisteredTovote"] = m.RegisteredTovote;
-                    r["Party"] = m.Party;
-                    r["VoterID"] = m.VoterID;
-                    r["TotalVotes"] = m.TotalVotes;
-                    r["FirstElection"] = m.FirstElection;
-                    r["LastElection"] = m.LastElection;
+            return dt;
 
-                    dt.Rows.Add(r);
+        }
 
-                }
-            }
+        public static DataTable VotersByCounty()
+        {
+            string Query = "SELECT HomeCounty, Count(*) AS TotalMembers, SUM(CASE WHEN RegisteredTovote = 1 THEN 1 ELSE 0 END) AS Registered, SUM(CASE WHEN TotalVotes > 0 THEN 1 ELSE 0 END) AS Voted FROM Members GROUP BY HomeCounty";
+
+            DataSet ds = new DataSet();
+            DataTable dt = ds.Tables.Add("Counties");
+
+            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["VoterFileConnection"].ConnectionString);
+            SqlCommand cmd = new SqlCommand(Query, conn);
+            conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            conn.Close();
+            da.Dispose();
+
             return dt;
         }
+
+        public static DataTable MembersByParty()
+        {
+            string Query = "SELECT Party, Count(*) AS Count FROM Members WHERE NOT (Party IS NULL) GROUP BY Party";
+
+            DataSet ds = new DataSet();
+            DataTable dt = ds.Tables.Add("Parties");
+
+            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["VoterFileConnection"].ConnectionString);
+            SqlCommand cmd = new SqlCommand(Query, conn);
+            conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            conn.Close();
+            da.Dispose();
+
+            return dt;
+        }
+
+
+
+
+        public static DataTable ElectionDates()
+        {
+            //For Drop-Down List
+            DataSet ds = new DataSet();
+            DataTable dt = ds.Tables.Add("Elections");
+
+            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["VoterFileConnection"].ConnectionString);
+            SqlCommand cmd = new SqlCommand("Select ElectionDate, CONVERT(nvarchar, ElectionDate, 106) + ' ' + ElectionType AS Description FROM Votes GROUP BY ElectionDate, ElectionType", conn);
+            conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            conn.Close();
+            da.Dispose();
+
+            return dt;
+
+        }
+
+        public static DataTable VotesByCounty(DateTime ElectionDate)
+        {
+            string Query = "SELECT Members.HomeCounty, ISNULL(MembersVoted, 0) AS MembersVoted FROM Members LEFT OUTER JOIN ";
+            Query += " (SELECT m.HomeCounty, Count(*) AS MembersVoted FROM Votes v INNER JOIN Members m ON v.VoterId = m.VoterId WHERE v.ElectionDate = @ElectionDate GROUP BY m.HomeCounty) VoteQuery ";
+            Query += " ON Members.HomeCounty = VoteQuery.HomeCounty";
+            Query += " GROUP BY Members.HomeCounty, VoteQuery.MembersVoted";
+
+            DataSet ds = new DataSet();
+            DataTable dt = ds.Tables.Add("Counties");
+
+            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["VoterFileConnection"].ConnectionString);
+            SqlCommand cmd = new SqlCommand(Query, conn);
+            cmd.Parameters.AddWithValue("@ElectionDate", ElectionDate);
+            conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            conn.Close();
+            da.Dispose();
+
+            return dt;
+        }
+
     }
 }

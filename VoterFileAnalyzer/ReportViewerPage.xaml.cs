@@ -23,14 +23,20 @@ namespace VoterFileAnalyzer
     /// </summary>
     public partial class ReportViewerPage : Page
     {
-        public ReportViewerPage(string ReportFile)
+        public ReportViewerPage(string ReportFile, DataTable dt, string datatableName, string Parameter = null)
         {
             InitializeComponent();
             myReportViewer.Reset();
-            DataTable dt = DataFunctions.GetMembers();
-            ReportDataSource ds = new ReportDataSource("Members", dt);
+            ReportDataSource ds = new ReportDataSource(datatableName, dt);
             myReportViewer.LocalReport.DataSources.Add(ds);
             myReportViewer.LocalReport.ReportEmbeddedResource = "VoterFileAnalyzer.Reports." + ReportFile;
+            if (Parameter != null)
+            {
+                ReportParameter param = new ReportParameter();
+                param.Name = "ElectionDate";
+                param.Values.Add(Parameter);
+                myReportViewer.LocalReport.SetParameters(param);
+            }
             myReportViewer.RefreshReport();
 
         }

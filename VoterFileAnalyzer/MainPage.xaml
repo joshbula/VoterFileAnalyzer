@@ -9,28 +9,47 @@
       Title="Voter File Analyzer - MainPage"
       Background="White">
 
-    <Grid>
+    <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
             <!--<ColumnDefinition Width="*" />-->
         </Grid.ColumnDefinitions>
 
 
-        <TextBlock Text="Florida Voter File Analyzer" FontSize="18" Grid.ColumnSpan="2"></TextBlock>
+        <TextBlock Text="Florida Voter File Analyzer" FontSize="18" Grid.ColumnSpan="2" Margin="5, 5, 5, 20"></TextBlock>
 
         <StackPanel Grid.Row="1">
-            <Button Name="Import" Content="Import Data" Click="Import_Click" Width="100" Height="30" Margin="0,0,0,10" HorizontalAlignment="Left"></Button>
-            <Button Name="Export" Content="Export to Excel" Click="Export_Click" Width="100" Height="30" Margin="0,0,0,10" HorizontalAlignment="Left"></Button>
-            <Button Name="AllMembers" Content="All Members" Click="AllMembers_Click"  Width="100" Height="30" Margin="0,0,0,10" HorizontalAlignment="Left"></Button>
-            <Button Name="AllByCounty" Content="All Members" Click="AllByCounty_Click" Width="100" Height="30" Margin="0,0,0,10" HorizontalAlignment="Left"></Button>
+            <Button Name="Import" Content="Import Data" Click="Import_Click" Width="150" Height="30" Margin="0,0,0,10" HorizontalAlignment="Left"></Button>
+            <Button Name="Export" Content="Export to Excel" Click="Export_Click" Width="150" Height="30" Margin="0,0,0,10" HorizontalAlignment="Left"></Button>
+            <Button Name="AllMembers" Content="All Members" Click="AllMembers_Click"  Width="150" Height="30" Margin="0,0,0,10" HorizontalAlignment="Left"></Button>
+            <Button Name="AllByCounty" Content="All By County" Click="AllByCounty_Click" Width="150" Height="30" Margin="0,0,0,10" HorizontalAlignment="Left"></Button>
+            <Button Name="CountySummary" Content="County Summary" Click="CountySummary_Click"  Width="150" Height="30" Margin="0,0,0,10" HorizontalAlignment="Left"></Button>
+            <Button Name="MembersByParty" Content="Members by Party" Click="MembersByParty_Click"  Width="150" Height="30" Margin="0,0,0,10" HorizontalAlignment="Left"></Button>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1">
-            <TextBlock Name="MemberCountTextBlock"></TextBlock>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                
+                <StackPanel Grid.Row="0"  >
+                    <TextBlock Name="MemberCountTextBlock"></TextBlock>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1">
+                    <TextBlock Text="Search specific elections:" FontWeight="Bold" FontSize="12"></TextBlock>
+                    <ComboBox x:Name="cbElectionDate" DisplayMemberPath="Description" SelectedValuePath="ElectionDate" ToolTip="Filter by election:" Margin="0, 10, 20, 20" Width="150" SelectionChanged="cbElectionDate_SelectionChanged" HorizontalAlignment="Left" />
+                    <TextBlock Name="ElectionCountTextBlock" Margin="0, 10, 0, 20"></TextBlock>
+                    <Button Name="ElectionCountySummary" Content="County Summary of This Election" Click="ElectionCountySummary_Click" Width="200" HorizontalAlignment="Left"></Button>
+                </StackPanel>
+                
+            </Grid>
         </StackPanel>
     </Grid>
 </Page>

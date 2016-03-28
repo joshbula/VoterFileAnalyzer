@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="VotesByCounty" targetNamespace="http://tempuri.org/VotesByCounty.xsd" xmlns:mstns="http://tempuri.org/VotesByCounty.xsd" xmlns="http://tempuri.org/VotesByCounty.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="VotesByCounty" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="VotesByCounty" msprop:Generator_UserDSName="VotesByCounty">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="VotesByCounty" msprop:Generator_TableClassName="VotesByCountyDataTable" msprop:Generator_TableVarName="tableVotesByCounty" msprop:Generator_TablePropName="_VotesByCounty" msprop:Generator_RowDeletingName="VotesByCountyRowDeleting" msprop:Generator_RowChangingName="VotesByCountyRowChanging" msprop:Generator_RowEvHandlerName="VotesByCountyRowChangeEventHandler" msprop:Generator_RowDeletedName="VotesByCountyRowDeleted" msprop:Generator_UserTableName="VotesByCounty" msprop:Generator_RowChangedName="VotesByCountyRowChanged" msprop:Generator_RowEvArgName="VotesByCountyRowChangeEvent" msprop:Generator_RowClassName="VotesByCountyRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="HomeCounty" msprop:Generator_ColumnVarNameInTable="columnHomeCounty" msprop:Generator_ColumnPropNameInRow="HomeCounty" msprop:Generator_ColumnPropNameInTable="HomeCountyColumn" msprop:Generator_UserColumnName="HomeCounty" type="xs:string" minOccurs="0" />
+              <xs:element name="MembersVoted" msprop:Generator_ColumnVarNameInTable="columnMembersVoted" msprop:Generator_ColumnPropNameInRow="MembersVoted" msprop:Generator_ColumnPropNameInTable="MembersVotedColumn" msprop:Generator_UserColumnName="MembersVoted" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
