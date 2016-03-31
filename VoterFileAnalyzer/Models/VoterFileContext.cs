@@ -6,6 +6,8 @@ namespace VoterFileAnalyzer
     {
         public VoterFileContext() :base("VoterFileConnection")
         {
+            Database.SetInitializer<VoterFileContext>(new CreateDatabaseIfNotExists<VoterFileContext>());
+            Database.SetInitializer<VoterFileContext>(new DropCreateDatabaseIfModelChanges<VoterFileContext>());
         }
 
         public DbSet<Member> Members { get; set; }

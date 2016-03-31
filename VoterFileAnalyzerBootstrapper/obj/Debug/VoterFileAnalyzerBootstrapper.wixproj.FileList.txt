@@ -1,0 +1,6 @@
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzerBootstrapper\bin\Debug\VoterFileAnalyzerBootstrapper.exe
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzerBootstrapper\bin\Debug\VoterFileAnalyzerBootstrapper.wixpdb
+obj\Debug\Bundle.wixobj
+obj\Debug\VoterFileAnalyzerBootstrapper.wixproj.BindContentsFileList.txt
+obj\Debug\VoterFileAnalyzerBootstrapper.wixproj.BindOutputsFileList.txt
+obj\Debug\VoterFileAnalyzerBootstrapper.wixproj.BindBuiltOutputsFileList.txt

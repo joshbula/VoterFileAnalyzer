@@ -1,0 +1,2 @@
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzerBootstrapper\bin\Debug\VoterFileAnalyzerBootstrapper.exe
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzerBootstrapper\bin\Debug\VoterFileAnalyzerBootstrapper.wixpdb

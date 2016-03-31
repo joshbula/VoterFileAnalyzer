@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension"
+     xmlns:sql="http://schemas.microsoft.com/wix/SqlExtension">
+	<Fragment>
+
+    <ComponentGroup Id="FileComponents" Directory="INSTALLFOLDER">
+      <Component Id="VoterFileBinary">
+        <File Source="$(var.VoterFileAnalyzer.TargetPath)" KeyPath="yes">
+          <Shortcut Id="mainShortcut" Name="Voter File Analyzer" Description="Voter File Analyzer" Directory="VoterFileShortcuts" WorkingDirectory="INSTALLFOLDER" Advertise="yes" Icon="floridaVotingIcon.ico" />
+        </File>
+        <RemoveFolder Id="deleteShortcut" Directory="VoterFileShortcuts" On="uninstall"/>
+      </Component>
+    </ComponentGroup>
+   
+    <!--<Component Id="UninstallShortcut" Guid="*" Directory="VoterFileShortcuts">
+      <Shortcut Id="UninstallThisProduct" Name="Uninstall Voter File Analyzer" Description="Uninstalls the Voter File Analyzer" Target="[System64Folder]msiexec.exe" Arguments="/x [ProductCode]"></Shortcut>
+      <RegistryValue Root="HKCU" Key="Software\CFAE\VoterFileAnalyzer" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+    </Component>-->
+    
+    <!--Create Database-->
+    <Binary Id="InitialCreate.sql" SourceFile="$(var.VoterFileAnalyzer.ProjectDir)InicialCreate.sql" />
+    <Component Id="SqlComponent" Guid="*" KeyPath="yes">
+      <sql:SqlDatabase Id="SqlDatabase" Instance="(localdb)\VoterFileDB" Database="VoterFileConnection" Server="[SQLSERVER]" CreateOnInstall="yes" DropOnUninstall="yes" ContinueOnError="no">
+        <sql:SqlScript Id="CreateTables" BinaryKey="InitialCreate.sql" ExecuteOnInstall="yes" />
+      </sql:SqlDatabase>
+    </Component>
+    
+  </Fragment>
+  
+  
+</Wix>

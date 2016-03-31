@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" Name="VoterFileAnalyzerSetup" Language="1033" Version="1.0.0" Manufacturer="Josh Bula" UpgradeCode="cb5fa5d2-5ba9-46d4-92a7-fe05888114e3">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <UIRef Id="WixUI_Minimal" />
+    <WixVariable Id="WixUILicensertf" Value="license.rtf" />
+
+    <Feature Id="ProductFeature" Title="VoterFileAnalyzerSetup" Level="1">
+      <ComponentGroupRef Id="FileComponents" />
+      <!--<ComponentRef Id="UninstallShortcut" />-->
+      <ComponentRef Id="SqlComponent"/>
+    </Feature>
+
+    <PropertyRef Id="NETFRAMEWORK45" />
+    <Condition Message="This application requires .NET Framework 4.5. Please install the .NET Framework then retry the installation">
+      <![CDATA[Installed OR NETFRAMEWORK45]]>
+    </Condition>
+
+    <Icon Id="floridaVotingIcon.ico" SourceFile="$(var.VoterFileAnalyzer.ProjectDir)florida-voting.ico"/>
+
+
+
+  </Product>
+
+</Wix>

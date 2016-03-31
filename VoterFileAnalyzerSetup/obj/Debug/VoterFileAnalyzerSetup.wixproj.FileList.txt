@@ -1,0 +1,8 @@
+obj\Debug\Product.wixobj
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzerSetup\bin\Debug\VoterFileAnalyzerSetup.msi
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzerSetup\bin\Debug\VoterFileAnalyzerSetup.wixpdb
+obj\Debug\VoterFileAnalyzerSetup.wixproj.BindContentsFileListnull.txt
+obj\Debug\VoterFileAnalyzerSetup.wixproj.BindOutputsFileListnull.txt
+obj\Debug\VoterFileAnalyzerSetup.wixproj.BindBuiltOutputsFileListnull.txt
+obj\Debug\Directories.wixobj
+obj\Debug\Components.wixobj

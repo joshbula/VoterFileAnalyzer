@@ -25,39 +25,47 @@ namespace VoterFileAnalyzer
     {
         public MainPage()
         {
-            InitializeComponent();
-
-            cbElectionDate.ItemsSource = ((IListSource)DataFunctions.ElectionDates()).GetList();
-
-            ElectionCountySummary.Visibility = Visibility.Hidden;//hide until something is selected from the combobox
-
-            using (var db = new VoterFileContext())
+            try
             {
-                int Members = db.Members.Count();
 
+                InitializeComponent();
 
-                if (Members == 0)
+                cbElectionDate.ItemsSource = ((IListSource)DataFunctions.ElectionDates()).GetList();
+
+                ElectionCountySummary.Visibility = Visibility.Hidden;//hide until something is selected from the combobox
+
+                using (var db = new VoterFileContext())
                 {
-                    MemberCountTextBlock.Text = "No data has been imported yet.";
+                    int Members = db.Members.Count();
+
+
+                    if (Members == 0)
+                    {
+                        MemberCountTextBlock.Text = "No data has been imported yet. \n\n\n";
+                    }
+                    else
+                    {
+                        int RegisteredVoters = db.Members.Where(p => p.RegisteredTovote == true).Count();
+                        int HasVoted = db.Members.Where(p => p.TotalVotes > 0).Count();
+
+                        MemberCountTextBlock.Text = "Members: " + Members.ToString() + "\nRegistered To Vote: " + RegisteredVoters.ToString() + "\nMembers Who Have Voted: " + HasVoted.ToString();
+                        MemberCountTextBlock.Text += "\n";
+                        double PercentRegistered = 0.00;
+                        double PercentHasVoted = 0.00;
+                        PercentRegistered = Convert.ToDouble(RegisteredVoters) / Convert.ToDouble(Members);
+                        PercentHasVoted = Convert.ToDouble(HasVoted) / Convert.ToDouble(Members);
+
+                        MemberCountTextBlock.Text += String.Format("{0:P2}", PercentRegistered) + " of your membership is registered to vote. \n";
+                        MemberCountTextBlock.Text += String.Format("{0:P2}", PercentHasVoted) + " of your membership has voted in a past election.\n\n";
+
+
+                    }
+
                 }
-                else
-                {
-                    int RegisteredVoters = db.Members.Where(p => p.RegisteredTovote == true).Count();
-                    int HasVoted = db.Members.Where(p => p.TotalVotes > 0).Count();
-
-                    MemberCountTextBlock.Text = "Members: " + Members.ToString() + "\nRegistered To Vote: " + RegisteredVoters.ToString() + "\nMembers Who Have Voted: " + HasVoted.ToString();
-                    MemberCountTextBlock.Text += "\n";
-                    double PercentRegistered = 0.00;
-                    double PercentHasVoted = 0.00;
-                    PercentRegistered = Convert.ToDouble(RegisteredVoters) / Convert.ToDouble(Members);
-                    PercentHasVoted = Convert.ToDouble(HasVoted) / Convert.ToDouble(Members);
-
-                    MemberCountTextBlock.Text += String.Format("{0:P2}", PercentRegistered) + " of your membership is registered to vote. \n";
-                    MemberCountTextBlock.Text += String.Format("{0:P2}", PercentHasVoted) + " of your membership has voted in a past election.\n\n";
-
-
-                }
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An Error Occurred in the Main Page: " + ex.ToString());
             }
 
 
