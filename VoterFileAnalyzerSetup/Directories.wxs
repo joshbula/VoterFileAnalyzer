@@ -3,9 +3,11 @@
 	<Fragment>
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFilesFolder">
-        <Directory Id="INSTALLFOLDER" Name="Voter File Analyzer" />
-        <Directory Id="ProgramMenuFolder">
-          <Directory Id="VoterFileShortcuts" Name="Voter File Analyzer" />
+        <Directory Id="INSTALLFOLDER" Name="Voter File Analyzer">
+          <Directory Id="ProgramMenuFolder">
+            <Directory Id="VoterFileShortcuts" Name="Voter File Analyzer" />
+          </Directory>
+          <Directory Id="DATABASEFOLDER" Name="data"></Directory>
         </Directory>
       </Directory>
     </Directory>

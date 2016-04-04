@@ -249,7 +249,7 @@
     <None Include="Reports\VotesByCounty.xss">
       <DependentUpon>VotesByCounty.xsd</DependentUpon>
     </None>
-    <None Include="SetupLocalDb.cmd" />
+    <None Include="SetupLocalDb.bat" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -258,9 +258,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="florida-voting.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="InitialCreate.sql" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

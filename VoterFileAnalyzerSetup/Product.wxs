@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension"
+     xmlns:sql="http://schemas.microsoft.com/wix/SqlExtension">
   <Product Id="*" Name="VoterFileAnalyzerSetup" Language="1033" Version="1.0.0" Manufacturer="Josh Bula" UpgradeCode="cb5fa5d2-5ba9-46d4-92a7-fe05888114e3">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
@@ -11,7 +13,6 @@
 
     <Feature Id="ProductFeature" Title="VoterFileAnalyzerSetup" Level="1">
       <ComponentGroupRef Id="FileComponents" />
-      <!--<ComponentRef Id="UninstallShortcut" />-->
       <ComponentRef Id="SqlComponent"/>
     </Feature>
 
@@ -21,8 +22,6 @@
     </Condition>
 
     <Icon Id="floridaVotingIcon.ico" SourceFile="$(var.VoterFileAnalyzer.ProjectDir)florida-voting.ico"/>
-
-
 
   </Product>
 

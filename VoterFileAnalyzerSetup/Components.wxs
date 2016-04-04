@@ -2,7 +2,7 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
      xmlns:util="http://schemas.microsoft.com/wix/UtilExtension"
      xmlns:sql="http://schemas.microsoft.com/wix/SqlExtension">
-	<Fragment>
+  <Fragment>
 
     <ComponentGroup Id="FileComponents" Directory="INSTALLFOLDER">
       <Component Id="VoterFileBinary">
@@ -11,22 +11,88 @@
         </File>
         <RemoveFolder Id="deleteShortcut" Directory="VoterFileShortcuts" On="uninstall"/>
       </Component>
+
+      <Component Id="EntityFramework.dll">
+        <File Source="$(var.VoterFileAnalyzer.TargetDir)EntityFramework.dll"></File>
+      </Component>
+      <Component Id="EntityFramework.SqlServer.dll">
+        <File Source="$(var.VoterFileAnalyzer.TargetDir)EntityFramework.SqlServer.dll"></File>
+      </Component>
+      <Component Id="EntityFramework.SqlServer.xml">
+        <File Source="$(var.VoterFileAnalyzer.TargetDir)EntityFramework.SqlServer.xml"></File>
+      </Component>
+      <Component Id="EntityFramework.xml">
+        <File Source="$(var.VoterFileAnalyzer.TargetDir)EntityFramework.xml"></File>
+      </Component>
+      <Component Id="EPPlus.dll">
+        <File Source="$(var.VoterFileAnalyzer.TargetDir)EPPlus.dll"></File>
+      </Component>
+      <Component Id="EPPlus.xmlEPPlus.xml">
+        <File Source="$(var.VoterFileAnalyzer.TargetDir)EPPlus.xml"></File>
+      </Component>
+
+      <Component Id="Excel.dll">
+        <File Source="$(var.VoterFileAnalyzer.TargetDir)Excel.dll"></File>
+      </Component>
+      <Component Id="Excel.pdb">
+        <File Source="$(var.VoterFileAnalyzer.TargetDir)Excel.pdb"></File>
+      </Component>
+      <Component Id="ICSharpCode.SharpZipLib.dll">
+        <File Source="$(var.VoterFileAnalyzer.TargetDir)ICSharpCode.SharpZipLib.dll"></File>
+      </Component>
+      <Component Id="Microsoft.ReportViewer.Common.dll">
+        <File Source="$(var.VoterFileAnalyzer.TargetDir)Microsoft.ReportViewer.Common.dll"></File>
+      </Component>
+      <Component Id="Microsoft.ReportViewer.WinForms.dll">
+        <File Source="$(var.VoterFileAnalyzer.TargetDir)Microsoft.ReportViewer.WinForms.dll"></File>
+      </Component>
+      <Component Id="Microsoft.ReportViewer.WinForms.xml">
+        <File Source="$(var.VoterFileAnalyzer.TargetDir)Microsoft.ReportViewer.WinForms.xml"></File>
+      </Component>
+      <Component Id="Microsoft.WindowsAPICodePack.dll">
+        <File Source="$(var.VoterFileAnalyzer.TargetDir)Microsoft.WindowsAPICodePack.dll"></File>
+      </Component>
+      <Component Id="Microsoft.WindowsAPICodePack.pdb">
+        <File Source="$(var.VoterFileAnalyzer.TargetDir)Microsoft.WindowsAPICodePack.pdb"></File>
+      </Component>
+      <Component Id="Microsoft.WindowsAPICodePack.Shell.dll">
+        <File Source="$(var.VoterFileAnalyzer.TargetDir)Microsoft.WindowsAPICodePack.Shell.dll"></File>
+      </Component>
+      <Component Id="Microsoft.WindowsAPICodePack.Shell.pdb">
+        <File Source="$(var.VoterFileAnalyzer.TargetDir)Microsoft.WindowsAPICodePack.Shell.pdb"></File>
+      </Component>
+      <Component Id="VoterFileAnalyzer.exe.config">
+        <File Source="$(var.VoterFileAnalyzer.TargetDir)VoterFileAnalyzer.exe.config"></File>
+      </Component>
+      <Component Id="VoterFileAnalyzer.pdb">
+        <File Source="$(var.VoterFileAnalyzer.TargetDir)VoterFileAnalyzer.pdb"></File>
+      </Component>
+      <Component Id="VoterFileAnalyzer.vshost.exe">
+        <File Source="$(var.VoterFileAnalyzer.TargetDir)VoterFileAnalyzer.vshost.exe"></File>
+      </Component>
+      <Component Id="VoterFileAnalyzer.vshost.exe.config">
+        <File Source="$(var.VoterFileAnalyzer.TargetDir)VoterFileAnalyzer.vshost.exe.config"></File>
+      </Component>
+
+
     </ComponentGroup>
-   
+
     <!--<Component Id="UninstallShortcut" Guid="*" Directory="VoterFileShortcuts">
       <Shortcut Id="UninstallThisProduct" Name="Uninstall Voter File Analyzer" Description="Uninstalls the Voter File Analyzer" Target="[System64Folder]msiexec.exe" Arguments="/x [ProductCode]"></Shortcut>
       <RegistryValue Root="HKCU" Key="Software\CFAE\VoterFileAnalyzer" Name="installed" Type="integer" Value="1" KeyPath="yes" />
     </Component>-->
-    
+
     <!--Create Database-->
-    <Binary Id="InitialCreate.sql" SourceFile="$(var.VoterFileAnalyzer.ProjectDir)InicialCreate.sql" />
-    <Component Id="SqlComponent" Guid="*" KeyPath="yes">
-      <sql:SqlDatabase Id="SqlDatabase" Instance="(localdb)\VoterFileDB" Database="VoterFileConnection" Server="[SQLSERVER]" CreateOnInstall="yes" DropOnUninstall="yes" ContinueOnError="no">
+
+
+    <!--<Component Id="SqlComponent" Guid="f7b3872a-b37d-42c0-960f-e4204416d66b" KeyPath="yes" Directory="INSTALLFOLDER">
+      <sql:SqlDatabase Id="SqlDatabase" Instance="[SQLINSTANCE]" Database="VoterFileConnection" Server="[SQLSERVER]" CreateOnInstall="yes" DropOnUninstall="yes" User="SQLUser" ContinueOnError="no">
         <sql:SqlScript Id="CreateTables" BinaryKey="InitialCreate.sql" ExecuteOnInstall="yes" />
       </sql:SqlDatabase>
-    </Component>
-    
+    </Component>-->
+
+
   </Fragment>
-  
-  
+
+
 </Wix>

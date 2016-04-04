@@ -35,5 +35,4 @@ E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Microsoft.ReportViewer.W
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\ReportViewerPage.baml
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\RdlCompile.cache
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\RdlCompile.compiled
-E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\VoterFileAnalyzer_Content.g.cs
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\VoterFileAnalyzer.Migrations.InitialCreate.resources
