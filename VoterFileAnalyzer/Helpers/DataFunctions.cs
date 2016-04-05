@@ -8,13 +8,15 @@ using System.Threading.Tasks;
 
 namespace VoterFileAnalyzer
 {
+    /// <summary>
+    /// Data Access Layer that uses datatables instead of Entity Framework for ReportViewer and EPPlus compatibility
+    /// </summary>
     class DataFunctions
     {
         public static DataTable GetMembers()
         {
             DataSet ds = new DataSet();
             DataTable dt = ds.Tables.Add("Members");
-
             SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["VoterFileConnection"].ConnectionString);
             SqlCommand cmd = new SqlCommand("Select * FROM Members", conn);
             conn.Open();
@@ -22,9 +24,7 @@ namespace VoterFileAnalyzer
             da.Fill(dt);
             conn.Close();
             da.Dispose();
-
             return dt;
-
         }
 
         public static DataTable VotersByCounty()
@@ -33,7 +33,6 @@ namespace VoterFileAnalyzer
 
             DataSet ds = new DataSet();
             DataTable dt = ds.Tables.Add("Counties");
-
             SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["VoterFileConnection"].ConnectionString);
             SqlCommand cmd = new SqlCommand(Query, conn);
             conn.Open();
@@ -41,7 +40,6 @@ namespace VoterFileAnalyzer
             da.Fill(dt);
             conn.Close();
             da.Dispose();
-
             return dt;
         }
 
@@ -51,7 +49,6 @@ namespace VoterFileAnalyzer
 
             DataSet ds = new DataSet();
             DataTable dt = ds.Tables.Add("Parties");
-
             SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["VoterFileConnection"].ConnectionString);
             SqlCommand cmd = new SqlCommand(Query, conn);
             conn.Open();
@@ -59,19 +56,14 @@ namespace VoterFileAnalyzer
             da.Fill(dt);
             conn.Close();
             da.Dispose();
-
             return dt;
         }
 
-
-
-
         public static DataTable ElectionDates()
         {
-            //For Drop-Down List
+            //For Drop-Down List on MainPage
             DataSet ds = new DataSet();
             DataTable dt = ds.Tables.Add("Elections");
-
             SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["VoterFileConnection"].ConnectionString);
             SqlCommand cmd = new SqlCommand("Select ElectionDate, CONVERT(nvarchar, ElectionDate, 106) + ' ' + ElectionType AS Description FROM Votes GROUP BY ElectionDate, ElectionType", conn);
             conn.Open();
@@ -79,9 +71,7 @@ namespace VoterFileAnalyzer
             da.Fill(dt);
             conn.Close();
             da.Dispose();
-
             return dt;
-
         }
 
         public static DataTable VotesByCounty(DateTime ElectionDate)
@@ -93,7 +83,6 @@ namespace VoterFileAnalyzer
 
             DataSet ds = new DataSet();
             DataTable dt = ds.Tables.Add("Counties");
-
             SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["VoterFileConnection"].ConnectionString);
             SqlCommand cmd = new SqlCommand(Query, conn);
             cmd.Parameters.AddWithValue("@ElectionDate", ElectionDate);
@@ -102,7 +91,6 @@ namespace VoterFileAnalyzer
             da.Fill(dt);
             conn.Close();
             da.Dispose();
-
             return dt;
         }
 

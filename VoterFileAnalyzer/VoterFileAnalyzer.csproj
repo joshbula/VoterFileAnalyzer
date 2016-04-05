@@ -249,7 +249,6 @@
     <None Include="Reports\VotesByCounty.xss">
       <DependentUpon>VotesByCounty.xsd</DependentUpon>
     </None>
-    <None Include="SetupLocalDb.bat" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

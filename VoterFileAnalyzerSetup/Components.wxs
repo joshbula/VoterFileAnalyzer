@@ -30,7 +30,6 @@
       <Component Id="EPPlus.xmlEPPlus.xml">
         <File Source="$(var.VoterFileAnalyzer.TargetDir)EPPlus.xml"></File>
       </Component>
-
       <Component Id="Excel.dll">
         <File Source="$(var.VoterFileAnalyzer.TargetDir)Excel.dll"></File>
       </Component>
@@ -83,8 +82,7 @@
       <Component Id="VoterFileAnalyzer.vshost.exe.config">
         <File Source="$(var.VoterFileAnalyzer.TargetDir)VoterFileAnalyzer.vshost.exe.config"></File>
       </Component>
-
-
+      
     </ComponentGroup>
 
   </Fragment>

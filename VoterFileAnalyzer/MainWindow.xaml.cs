@@ -28,18 +28,9 @@ namespace VoterFileAnalyzer
 
     public partial class MainWindow : NavigationWindow
     {
-        ImportPage importPage = new ImportPage();
-
-        
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        void MenuImport_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService ns = NavigationService.GetNavigationService(this);
-            ns.Navigate(new ImportPage());
         }
     }
 }

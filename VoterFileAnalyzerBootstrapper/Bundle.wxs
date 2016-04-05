@@ -7,18 +7,20 @@
     </BootstrapperApplicationRef>
 
     <Chain>
-      
+
       <!--Make sure .NET is installed-->
       <PackageGroupRef Id="NetFx45Web"/>
-      
+
+      <!--Make sure SQL Server 2012 LocalDB is installed-->
       <MsiPackage SourceFile="SqlLocalDB.MSI" Compressed="yes" EnableFeatureSelection="yes" Vital="yes" InstallCondition="NOT(SQLSERVERDB2012_EXIST)">
         <MsiProperty Name="IACCEPTSQLLOCALDBLICENSETERMS" Value="YES"/>
       </MsiPackage>
 
+      <!--install the main project-->
       <MsiPackage SourceFile="$(var.VoterFileAnalyzerSetup.TargetPath)" />
 
     </Chain>
-    
+
   </Bundle>
 
 </Wix>

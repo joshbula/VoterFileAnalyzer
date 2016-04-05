@@ -17,10 +17,8 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
-            <!--<ColumnDefinition Width="*" />-->
         </Grid.ColumnDefinitions>
-
-
+        
         <TextBlock Text="Florida Voter File Analyzer" FontSize="18" Grid.ColumnSpan="2" Margin="5, 5, 5, 20"></TextBlock>
 
         <StackPanel Grid.Row="1">
@@ -31,6 +29,7 @@
             <Button Name="CountySummary" Content="County Summary" Click="CountySummary_Click"  Width="150" Height="30" Margin="0,0,0,10" HorizontalAlignment="Left"></Button>
             <Button Name="MembersByParty" Content="Members by Party" Click="MembersByParty_Click"  Width="150" Height="30" Margin="0,0,0,10" HorizontalAlignment="Left"></Button>
         </StackPanel>
+        
         <StackPanel Grid.Column="1" Grid.Row="1">
             <Grid>
                 <Grid.RowDefinitions>
@@ -51,6 +50,8 @@
                 
             </Grid>
         </StackPanel>
+        
         <TextBlock Grid.Row="2" Grid.ColumnSpan="2">Josh Bula, Center for Fine Arts Education, www.CFAEFL.org</TextBlock>
+        
     </Grid>
 </Page>

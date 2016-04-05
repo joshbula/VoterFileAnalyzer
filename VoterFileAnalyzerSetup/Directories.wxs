@@ -7,7 +7,6 @@
           <Directory Id="ProgramMenuFolder">
             <Directory Id="VoterFileShortcuts" Name="Voter File Analyzer" />
           </Directory>
-          <Directory Id="DATABASEFOLDER" Name="data"></Directory>
         </Directory>
       </Directory>
     </Directory>

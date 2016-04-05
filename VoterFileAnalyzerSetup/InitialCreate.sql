@@ -1,3 +1,5 @@
+---not using this anymore since we're just including the whole .mdf file in the project instead
+
 If NOT EXISTS (SELECT database_id FROM sys.databases WHERE Name = 'VoterFileConnection')
 BEGIN
 CREATE DATABASE VoterFileConnection;

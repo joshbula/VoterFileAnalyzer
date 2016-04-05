@@ -8,5 +8,4 @@
         Title="Voter File Analyzer" 
                   Height="600" Width="700"
                   Source="MainPage.xaml">
-  
 </NavigationWindow>

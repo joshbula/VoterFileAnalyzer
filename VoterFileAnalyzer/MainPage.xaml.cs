@@ -76,11 +76,7 @@ namespace VoterFileAnalyzer
             this.NavigationService.Navigate(new ImportPage());
         }
 
-        /// <summary>
-        /// Exports the Members table to an excel file
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void Export_Click(object sender, RoutedEventArgs e)
         {
             var fd = new SaveFileDialog();
@@ -124,7 +120,6 @@ namespace VoterFileAnalyzer
                 int VoteCount = db.Votes.Where(p => p.ElectionDate == ElectionDate).Count();
                 ElectionCountTextBlock.Text = VoteCount.ToString() + " members voted in the election on " + String.Format("{0:d}", ElectionDate) + ".";
             }
-
 
         }
 

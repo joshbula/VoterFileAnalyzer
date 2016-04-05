@@ -25,6 +25,8 @@ namespace VoterFileAnalyzer
     {
         public ReportViewerPage(string ReportFile, DataTable dt, string datatableName, string Parameter = null)
         {
+            //TODO: change Parameter to a list of key/value pairs if any more reports are added that need parameters or multiple parameters per report.
+
             InitializeComponent();
             myReportViewer.Reset();
             ReportDataSource ds = new ReportDataSource(datatableName, dt);

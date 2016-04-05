@@ -41,12 +41,6 @@ namespace VoterFileAnalyzer
 
         #region Controls
 
-
-        private void MenuExit_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("You Clicked Exit");
-        }
-
         private void btnSelectMembershipFile_Click(object sender, RoutedEventArgs e)
         {
             var fd = new OpenFileDialog();
@@ -91,36 +85,31 @@ namespace VoterFileAnalyzer
             CheckIfAllFilesComplete();
         }
 
-        #endregion
-
-
         private async void btnImportFiles_Click(object sender, RoutedEventArgs e)
         {
             if (CheckIfAllFilesComplete())
             {
                 var progressIndicator = new Progress<string>(ReportProgress);
-
                 int importedMembers = await ImportMembers(progressIndicator);
-
-
-
-
-
             }
             else
             {
                 tbStatus.Text = "File or Folders missing! Use the buttons to to select everything.";
             }
-
-
         }
 
+        #endregion
+
+
+
+
+        #region HelperFunctions
 
         private bool CheckIfAllFilesComplete()
         {
             lblReportErrors.Text = "";
 
-            if (MembershipExcelFilePath != "" && VoterExtractFolderPath != "")// && VoterHistoryFolderPath != "")
+            if (MembershipExcelFilePath != "" && VoterExtractFolderPath != "" && VoterHistoryFolderPath != "")
             {
                 return true;
             }
@@ -139,12 +128,6 @@ namespace VoterFileAnalyzer
             }
         }
 
-
-        #region HelperFunctions
-
-
-
-
         async Task<int> ImportMembers(IProgress<string> progress)
         {
             FileStream stream = File.Open(MembershipExcelFilePath, FileMode.Open, FileAccess.Read);
@@ -156,7 +139,6 @@ namespace VoterFileAnalyzer
             int processCount = await Task.Run<int>(() =>
             {
                 int tempCount = 0;
-
 
                 for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                 {
@@ -172,14 +154,13 @@ namespace VoterFileAnalyzer
                     member.TotalVotes = 0;
                     member.LastElection = null;
                     Members.Add(member);
-                    //db.SaveChanges();
+
                     if (progress != null)
                     {
                         progress.Report("Importing Members: " + tempCount.ToString());
                     }
+
                     tempCount++;
-
-
 
                 }
 
@@ -191,7 +172,6 @@ namespace VoterFileAnalyzer
 
                 foreach (var file in extractFiles)
                 {
-
                     string filename = System.IO.Path.GetFileName(file);
 
                     using (TextReader tr = File.OpenText(file))
@@ -211,11 +191,12 @@ namespace VoterFileAnalyzer
                                 member.VoterID = Convert.ToInt32(fields[1]);
                                 member.RegisteredTovote = fields[28] == "ACT" ? true : false;
                                 member.Party = fields[23];
-                                //db.SaveChanges();
+                               
                                 if (progress != null)
                                 {
-                                    progress.Report("Found Voter in " + filename + " - \n" + member.FirstName + " " + member.LastName);
+                                    progress.Report("Found Voter Match in " + filename + " - \n" + member.FirstName + " " + member.LastName);
                                 }
+
                             }
 
                         }
@@ -275,7 +256,7 @@ namespace VoterFileAnalyzer
                                 //db.SaveChanges();
                                 if (progress != null)
                                 {
-                                    progress.Report("Loading History: " + filename + " - \n" + member.FirstName + " " + member.LastName);
+                                    progress.Report("Loading Voter History: " + filename + " - \n\nFound Member:\n" + member.FirstName + " " + member.LastName);
                                 }
                             }
 

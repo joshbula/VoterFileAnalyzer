@@ -12,14 +12,16 @@ namespace VoterFileAnalyzer
 {
     class ExcelExporter
     {
+        /// <summary>
+        /// Generates an Excel File from a DataTable
+        /// Uses the EPPlus Package:  http://epplus.codeplex.com/downloads/get/418378
+        /// This is adapted from http://bytesofcode.hubpages.com/hub/Export-DataSet-and-DataTable-to-Excel-2007-in-C
+        /// </summary>
+        /// <param name="dataToExcel"></param>
+        /// <param name="excelSheetName"></param>
+        /// <param name="FilePath"></param>
         public static void ExcelGenerator(DataTable dataToExcel, string excelSheetName, string FilePath)
         {
-
-            //Uses the EPPlus Package:  http://epplus.codeplex.com/downloads/get/418378
-            //This is adapted from http://bytesofcode.hubpages.com/hub/Export-DataSet-and-DataTable-to-Excel-2007-in-C
-          
-
-
             var newFile = new FileInfo(FilePath);
 
             //Step 1 : Create object of ExcelPackage class and pass file path to constructor.
@@ -46,7 +48,7 @@ namespace VoterFileAnalyzer
 
                 //Step 4 : (Optional) Set the file properties like title, author and subject
                 package.Workbook.Properties.Title = "Florida Voter File Analyzer";
-                package.Workbook.Properties.Author = "by Josh Bula";
+                package.Workbook.Properties.Author = "Josh Bula";
                 package.Workbook.Properties.Subject = "";
 
                 //Step 5 : Save all changes to ExcelPackage object which will create Excel 2007 file.
