@@ -109,9 +109,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helpers\DataFunctions.cs" />
-    <Compile Include="Migrations\201603291717145_InitialCreate.cs" />
-    <Compile Include="Migrations\201603291717145_InitialCreate.Designer.cs">
-      <DependentUpon>201603291717145_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201604051713576_InitialCreate.cs" />
+    <Compile Include="Migrations\201604051713576_InitialCreate.Designer.cs">
+      <DependentUpon>201604051713576_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Reports\Counties.Designer.cs">
@@ -186,8 +186,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201603291717145_InitialCreate.resx">
-      <DependentUpon>201603291717145_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604051713576_InitialCreate.resx">
+      <DependentUpon>201604051713576_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

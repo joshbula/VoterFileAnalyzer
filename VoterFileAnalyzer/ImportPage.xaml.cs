@@ -293,22 +293,30 @@ namespace VoterFileAnalyzer
                     db.Database.ExecuteSqlCommand("DELETE FROM Votes");
 
                     int i = 0;
-                    foreach (var member in Members)
+                    try
                     {
-                        progress.Report("Saving to Database " + i.ToString());
-                        db.Members.Add(member);
-                        db.SaveChanges();
-                        var votes = Votes.Where(p => p.VoterID == member.VoterID);
-                        foreach (var vote in votes)
+                        foreach (var member in Members)
                         {
-                            vote.MemberID = member.MemberID;
-                            db.Votes.Add(vote);
+                            progress.Report("Saving to Database " + i.ToString());
+                            db.Members.Add(member);
                             db.SaveChanges();
+                            var votes = Votes.Where(p => p.VoterID == member.VoterID);
+                            foreach (var vote in votes)
+                            {
+                                vote.MemberID = member.MemberID;
+                                db.Votes.Add(vote);
+                                db.SaveChanges();
+                            }
+
+                            i++;
+
                         }
-
-                        i++;
-
                     }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+
 
                 }//end using
 

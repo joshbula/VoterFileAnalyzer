@@ -14,6 +14,8 @@ E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Microsoft.WindowsAPICode
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Microsoft.WindowsAPICodePack.pdb
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Microsoft.WindowsAPICodePack.Shell.pdb
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\VoterFile.mdf
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\VoterFile_log.ldf
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\VoterFileAnalyzer.exe
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\VoterFileAnalyzer.exe.config
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\VoterFileAnalyzer.pdb

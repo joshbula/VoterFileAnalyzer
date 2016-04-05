@@ -6,4 +6,3 @@ obj\Debug\VoterFileAnalyzerSetup.wixproj.BindOutputsFileListnull.txt
 obj\Debug\VoterFileAnalyzerSetup.wixproj.BindBuiltOutputsFileListnull.txt
 obj\Debug\Directories.wixobj
 obj\Debug\Components.wixobj
-obj\Debug\Database.wixobj

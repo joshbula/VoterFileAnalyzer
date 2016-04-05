@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 
 namespace VoterFileAnalyzer
 {
@@ -6,6 +7,7 @@ namespace VoterFileAnalyzer
     {
         public VoterFileContext() :base("VoterFileConnection")
         {
+            AppDomain.CurrentDomain.SetData("DataDirectory", AppDomain.CurrentDomain.BaseDirectory);
             Database.SetInitializer<VoterFileContext>(new CreateDatabaseIfNotExists<VoterFileContext>());
             Database.SetInitializer<VoterFileContext>(new DropCreateDatabaseIfModelChanges<VoterFileContext>());
         }

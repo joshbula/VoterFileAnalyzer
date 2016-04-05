@@ -61,6 +61,16 @@
       <Component Id="Microsoft.WindowsAPICodePack.Shell.pdb">
         <File Source="$(var.VoterFileAnalyzer.TargetDir)Microsoft.WindowsAPICodePack.Shell.pdb"></File>
       </Component>
+      <Component Id="VoterFile.mdf">
+        <File Source="$(var.VoterFileAnalyzer.TargetDir)VoterFile.mdf">
+          <Permission User="Everyone" GenericAll="yes" />
+        </File>
+      </Component>
+      <Component Id="VoterFile_log.ldf">
+        <File Source="$(var.VoterFileAnalyzer.TargetDir)VoterFile_log.ldf">
+          <Permission User="Everyone" GenericAll="yes" />
+        </File>
+      </Component>
       <Component Id="VoterFileAnalyzer.exe.config">
         <File Source="$(var.VoterFileAnalyzer.TargetDir)VoterFileAnalyzer.exe.config"></File>
       </Component>
@@ -76,21 +86,6 @@
 
 
     </ComponentGroup>
-
-    <!--<Component Id="UninstallShortcut" Guid="*" Directory="VoterFileShortcuts">
-      <Shortcut Id="UninstallThisProduct" Name="Uninstall Voter File Analyzer" Description="Uninstalls the Voter File Analyzer" Target="[System64Folder]msiexec.exe" Arguments="/x [ProductCode]"></Shortcut>
-      <RegistryValue Root="HKCU" Key="Software\CFAE\VoterFileAnalyzer" Name="installed" Type="integer" Value="1" KeyPath="yes" />
-    </Component>-->
-
-    <!--Create Database-->
-
-
-    <!--<Component Id="SqlComponent" Guid="f7b3872a-b37d-42c0-960f-e4204416d66b" KeyPath="yes" Directory="INSTALLFOLDER">
-      <sql:SqlDatabase Id="SqlDatabase" Instance="[SQLINSTANCE]" Database="VoterFileConnection" Server="[SQLSERVER]" CreateOnInstall="yes" DropOnUninstall="yes" User="SQLUser" ContinueOnError="no">
-        <sql:SqlScript Id="CreateTables" BinaryKey="InitialCreate.sql" ExecuteOnInstall="yes" />
-      </sql:SqlDatabase>
-    </Component>-->
-
 
   </Fragment>
 
