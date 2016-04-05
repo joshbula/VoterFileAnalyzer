@@ -36,3 +36,4 @@ E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\ReportViewerPage.baml
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\RdlCompile.cache
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\RdlCompile.compiled
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\VoterFileAnalyzer.Migrations.InitialCreate.resources
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\VoterFileAnalyzer.csprojResolveAssemblyReference.cache

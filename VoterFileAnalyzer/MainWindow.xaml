@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:VoterFileAnalyzer"
         mc:Ignorable="d"
         Title="Voter File Analyzer" 
-                  Height="500" Width="700"
+                  Height="600" Width="700"
                   Source="MainPage.xaml">
   
 </NavigationWindow>

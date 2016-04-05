@@ -8,7 +8,7 @@
       d:DesignHeight="500" d:DesignWidth="700"
       Title="Voter File Analyzer - ImportPage">
 
-    <Grid Background="White" Margin="0,0,0,-182">
+    <Grid Background="White" Margin="5,5,5,-182">
 
 
         <Grid.RowDefinitions>
