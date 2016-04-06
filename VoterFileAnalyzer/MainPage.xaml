@@ -28,6 +28,9 @@
             <Button Name="AllByCounty" Content="All By County" Click="AllByCounty_Click" Width="150" Height="30" Margin="0,0,0,10" HorizontalAlignment="Left"></Button>
             <Button Name="CountySummary" Content="County Summary" Click="CountySummary_Click"  Width="150" Height="30" Margin="0,0,0,10" HorizontalAlignment="Left"></Button>
             <Button Name="MembersByParty" Content="Members by Party" Click="MembersByParty_Click"  Width="150" Height="30" Margin="0,0,0,10" HorizontalAlignment="Left"></Button>
+
+            <Button Name="BackupDatabase" Content="Backup Database" Click="BackupDatabase_Click" Width="150" Height="20" Margin="0,10,0,10" HorizontalAlignment="Left"></Button>
+            <Button Name="RestoreDatabase" Content="Restore Database" Click="RestoreDatabase_Click"  Width="150" Height="20" Margin="0,0,0,10" HorizontalAlignment="Left"></Button>
         </StackPanel>
         
         <StackPanel Grid.Column="1" Grid.Row="1">
