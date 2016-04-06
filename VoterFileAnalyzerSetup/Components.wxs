@@ -36,11 +36,11 @@
       <Component Id="Excel.pdb">
         <File Source="$(var.VoterFileAnalyzer.TargetDir)Excel.pdb"></File>
       </Component>
-      <Component Id="ICSharpCode.SharpZipLib.dll">
-        <File Source="$(var.VoterFileAnalyzer.TargetDir)ICSharpCode.SharpZipLib.dll"></File>
-      </Component>
       <Component Id="Microsoft.ReportViewer.Common.dll">
         <File Source="$(var.VoterFileAnalyzer.TargetDir)Microsoft.ReportViewer.Common.dll"></File>
+      </Component>
+      <Component Id="Microsoft.ReportViewer.ProcessingObjectModel.dll">
+        <File Source="$(var.VoterFileAnalyzer.TargetDir)Microsoft.ReportViewer.ProcessingObjectModel.dll"></File>
       </Component>
       <Component Id="Microsoft.ReportViewer.WinForms.dll">
         <File Source="$(var.VoterFileAnalyzer.TargetDir)Microsoft.ReportViewer.WinForms.dll"></File>
@@ -82,7 +82,29 @@
       <Component Id="VoterFileAnalyzer.vshost.exe.config">
         <File Source="$(var.VoterFileAnalyzer.TargetDir)VoterFileAnalyzer.vshost.exe.config"></File>
       </Component>
+
       
+    </ComponentGroup>
+
+    <ComponentGroup Id="ReportDefinitions" Directory="REPORTSFOLDER">
+      <Component Id="Reports.AllMembers.rdlc">
+        <File Source="$(var.VoterFileAnalyzer.ProjectDir)Reports\AllMembers.rdlc"></File>
+      </Component>
+      <Component Id="Reports.Counties.rdlc">
+        <File Source="$(var.VoterFileAnalyzer.ProjectDir)Reports\Counties.rdlc"></File>
+      </Component>
+      <Component Id="Reports.CountySummary.rdlc">
+        <File Source="$(var.VoterFileAnalyzer.ProjectDir)Reports\CountySummary.rdlc"></File>
+      </Component>
+      <Component Id="Reports.GroupedByCounty.rdlc">
+        <File Source="$(var.VoterFileAnalyzer.ProjectDir)Reports\GroupedByCounty.rdlc"></File>
+      </Component>
+      <Component Id="Reports.MembersByParty.rdlc">
+        <File Source="$(var.VoterFileAnalyzer.ProjectDir)Reports\MembersByParty.rdlc"></File>
+      </Component>
+      <Component Id="Reports.VotesByCounty.rdlc">
+        <File Source="$(var.VoterFileAnalyzer.ProjectDir)Reports\VotesByCounty.rdlc"></File>
+      </Component>
     </ComponentGroup>
 
   </Fragment>

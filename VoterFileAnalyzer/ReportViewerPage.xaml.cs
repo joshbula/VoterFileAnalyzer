@@ -31,7 +31,8 @@ namespace VoterFileAnalyzer
             myReportViewer.Reset();
             ReportDataSource ds = new ReportDataSource(datatableName, dt);
             myReportViewer.LocalReport.DataSources.Add(ds);
-            myReportViewer.LocalReport.ReportEmbeddedResource = "VoterFileAnalyzer.Reports." + ReportFile;
+            string reportFilePath = AppDomain.CurrentDomain.BaseDirectory + @"Reports\" + ReportFile;
+            myReportViewer.LocalReport.ReportPath = reportFilePath;
             if (Parameter != null)
             {
                 ReportParameter param = new ReportParameter();

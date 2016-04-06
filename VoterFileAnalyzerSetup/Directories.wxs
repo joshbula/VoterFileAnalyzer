@@ -7,6 +7,7 @@
           <Directory Id="ProgramMenuFolder">
             <Directory Id="VoterFileShortcuts" Name="Voter File Analyzer" />
           </Directory>
+          <Directory Id="REPORTSFOLDER" Name="Reports" />
         </Directory>
       </Directory>
     </Directory>

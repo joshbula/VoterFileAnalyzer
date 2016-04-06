@@ -11,6 +11,7 @@
 
     <Feature Id="ProductFeature" Title="VoterFileAnalyzerSetup" Level="1">
       <ComponentGroupRef Id="FileComponents" />
+      <ComponentGroupRef Id="ReportDefinitions"/>
     </Feature>
 
     <PropertyRef Id="NETFRAMEWORK45" />

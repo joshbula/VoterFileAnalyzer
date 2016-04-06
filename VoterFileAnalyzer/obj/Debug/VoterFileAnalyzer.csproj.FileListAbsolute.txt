@@ -16,7 +16,6 @@ E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Microsoft.WindowsAPICode
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Microsoft.WindowsAPICodePack.pdb
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Microsoft.WindowsAPICodePack.Shell.pdb
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Excel.dll
-E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\ICSharpCode.SharpZipLib.dll
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Excel.pdb
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\EntityFramework.dll
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\EntityFramework.SqlServer.dll
@@ -36,4 +35,11 @@ E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\ReportViewerPage.baml
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\RdlCompile.cache
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\RdlCompile.compiled
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\VoterFileAnalyzer.Migrations.InitialCreate.resources
-E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\VoterFileAnalyzer.csprojResolveAssemblyReference.cache
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Reports\AllMembers.rdlc
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\VoterFileAnalyzer_Content.g.cs
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Reports\Counties.rdlc
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Reports\CountySummary.rdlc
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Reports\GroupedByCounty.rdlc
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Reports\MembersByParty.rdlc
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Reports\VotesByCounty.rdlc
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
