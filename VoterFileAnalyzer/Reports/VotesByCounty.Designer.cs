@@ -283,6 +283,8 @@ namespace VoterFileAnalyzer.Reports {
             
             private global::System.Data.DataColumn columnMembersVoted;
             
+            private global::System.Data.DataColumn columnTotalMembers;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public VotesByCountyDataTable() {
@@ -334,6 +336,14 @@ namespace VoterFileAnalyzer.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TotalMembersColumn {
+                get {
+                    return this.columnTotalMembers;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -369,11 +379,12 @@ namespace VoterFileAnalyzer.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public VotesByCountyRow AddVotesByCountyRow(string HomeCounty, string MembersVoted) {
+            public VotesByCountyRow AddVotesByCountyRow(string HomeCounty, string MembersVoted, string TotalMembers) {
                 VotesByCountyRow rowVotesByCountyRow = ((VotesByCountyRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         HomeCounty,
-                        MembersVoted};
+                        MembersVoted,
+                        TotalMembers};
                 rowVotesByCountyRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowVotesByCountyRow);
                 return rowVotesByCountyRow;
@@ -398,6 +409,7 @@ namespace VoterFileAnalyzer.Reports {
             internal void InitVars() {
                 this.columnHomeCounty = base.Columns["HomeCounty"];
                 this.columnMembersVoted = base.Columns["MembersVoted"];
+                this.columnTotalMembers = base.Columns["TotalMembers"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -407,6 +419,8 @@ namespace VoterFileAnalyzer.Reports {
                 base.Columns.Add(this.columnHomeCounty);
                 this.columnMembersVoted = new global::System.Data.DataColumn("MembersVoted", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMembersVoted);
+                this.columnTotalMembers = new global::System.Data.DataColumn("TotalMembers", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalMembers);
                 this.ExtendedProperties.Add("Generator_TablePropName", "_VotesByCounty");
                 this.ExtendedProperties.Add("Generator_UserTableName", "VotesByCounty");
             }
@@ -583,6 +597,22 @@ namespace VoterFileAnalyzer.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TotalMembers {
+                get {
+                    try {
+                        return ((string)(this[this.tableVotesByCounty.TotalMembersColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalMembers\' in table \'VotesByCounty\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVotesByCounty.TotalMembersColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsHomeCountyNull() {
                 return this.IsNull(this.tableVotesByCounty.HomeCountyColumn);
             }
@@ -603,6 +633,18 @@ namespace VoterFileAnalyzer.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetMembersVotedNull() {
                 this[this.tableVotesByCounty.MembersVotedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTotalMembersNull() {
+                return this.IsNull(this.tableVotesByCounty.TotalMembersColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTotalMembersNull() {
+                this[this.tableVotesByCounty.TotalMembersColumn] = global::System.Convert.DBNull;
             }
         }
         

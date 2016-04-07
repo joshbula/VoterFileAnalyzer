@@ -12,11 +12,12 @@
   <xs:element name="VotesByCounty" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="VotesByCounty" msprop:Generator_UserDSName="VotesByCounty">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="VotesByCounty" msprop:Generator_TableClassName="VotesByCountyDataTable" msprop:Generator_TableVarName="tableVotesByCounty" msprop:Generator_TablePropName="_VotesByCounty" msprop:Generator_RowDeletingName="VotesByCountyRowDeleting" msprop:Generator_RowChangingName="VotesByCountyRowChanging" msprop:Generator_RowEvHandlerName="VotesByCountyRowChangeEventHandler" msprop:Generator_RowDeletedName="VotesByCountyRowDeleted" msprop:Generator_UserTableName="VotesByCounty" msprop:Generator_RowChangedName="VotesByCountyRowChanged" msprop:Generator_RowEvArgName="VotesByCountyRowChangeEvent" msprop:Generator_RowClassName="VotesByCountyRow">
+        <xs:element name="VotesByCounty" msprop:Generator_TableClassName="VotesByCountyDataTable" msprop:Generator_TableVarName="tableVotesByCounty" msprop:Generator_RowChangedName="VotesByCountyRowChanged" msprop:Generator_TablePropName="_VotesByCounty" msprop:Generator_RowDeletingName="VotesByCountyRowDeleting" msprop:Generator_RowChangingName="VotesByCountyRowChanging" msprop:Generator_RowEvHandlerName="VotesByCountyRowChangeEventHandler" msprop:Generator_RowDeletedName="VotesByCountyRowDeleted" msprop:Generator_RowClassName="VotesByCountyRow" msprop:Generator_UserTableName="VotesByCounty" msprop:Generator_RowEvArgName="VotesByCountyRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="HomeCounty" msprop:Generator_ColumnVarNameInTable="columnHomeCounty" msprop:Generator_ColumnPropNameInRow="HomeCounty" msprop:Generator_ColumnPropNameInTable="HomeCountyColumn" msprop:Generator_UserColumnName="HomeCounty" type="xs:string" minOccurs="0" />
               <xs:element name="MembersVoted" msprop:Generator_ColumnVarNameInTable="columnMembersVoted" msprop:Generator_ColumnPropNameInRow="MembersVoted" msprop:Generator_ColumnPropNameInTable="MembersVotedColumn" msprop:Generator_UserColumnName="MembersVoted" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalMembers" msprop:Generator_ColumnVarNameInTable="columnTotalMembers" msprop:Generator_ColumnPropNameInRow="TotalMembers" msprop:Generator_ColumnPropNameInTable="TotalMembersColumn" msprop:Generator_UserColumnName="TotalMembers" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

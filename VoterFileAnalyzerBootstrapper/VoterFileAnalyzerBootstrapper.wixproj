@@ -52,6 +52,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MITlicense.rtf" />
     <Content Include="SqlLocalDB.MSI" />
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />

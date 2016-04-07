@@ -76,10 +76,11 @@ namespace VoterFileAnalyzer
 
         public static DataTable VotesByCounty(DateTime ElectionDate)
         {
-            string Query = "SELECT Members.HomeCounty, ISNULL(MembersVoted, 0) AS MembersVoted FROM Members LEFT OUTER JOIN ";
+            string Query = "SELECT Members.HomeCounty, ISNULL(TotalMembers, 0) AS TotalMembers, ISNULL(MembersVoted, 0) AS MembersVoted FROM Members LEFT OUTER JOIN ";
             Query += " (SELECT m.HomeCounty, Count(*) AS MembersVoted FROM Votes v INNER JOIN Members m ON v.VoterId = m.VoterId WHERE v.ElectionDate = @ElectionDate GROUP BY m.HomeCounty) VoteQuery ";
-            Query += " ON Members.HomeCounty = VoteQuery.HomeCounty";
-            Query += " GROUP BY Members.HomeCounty, VoteQuery.MembersVoted";
+            Query += " ON Members.HomeCounty = VoteQuery.HomeCounty LEFT OUTER JOIN ";
+            Query += " (SELECT HomeCounty, Count(*) AS TotalMembers FROM Members GROUP BY HomeCounty) TotalQuery ON Members.HomeCounty = TotalQuery.HomeCounty ";
+            Query += " GROUP BY Members.HomeCounty, TotalQuery.HomeCounty, TotalQuery.TotalMembers, VoteQuery.MembersVoted";
 
             DataSet ds = new DataSet();
             DataTable dt = ds.Tables.Add("Counties");
