@@ -65,7 +65,7 @@ namespace VoterFileAnalyzer
             DataSet ds = new DataSet();
             DataTable dt = ds.Tables.Add("Elections");
             SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["VoterFileConnection"].ConnectionString);
-            SqlCommand cmd = new SqlCommand("Select ElectionDate, CONVERT(nvarchar, ElectionDate, 106) + ' ' + ElectionType AS Description FROM Votes GROUP BY ElectionDate, ElectionType", conn);
+            SqlCommand cmd = new SqlCommand("Select ElectionDate, CONVERT(nvarchar, ElectionDate, 106) + ' ' + ElectionType AS Description FROM Votes GROUP BY ElectionDate, ElectionType ORDER BY ElectionDate DESC", conn);
             conn.Open();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);

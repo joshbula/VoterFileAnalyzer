@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
      xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
-  <Bundle Name="Voter File Analyzer" Version="1.0.0.0" Manufacturer="Josh Bula" UpgradeCode="3d840d44-d17a-4df9-acee-4ba3b5a569b4">
+  <Bundle Name="Voter File Analyzer" Version="1.0.1.0" Manufacturer="Josh Bula" UpgradeCode="3d840d44-d17a-4df9-acee-4ba3b5a569b4">
     <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.HyperlinkSidebarLicense">
       <bal:WixStandardBootstrapperApplication LicenseUrl="" ShowVersion="yes" />
     </BootstrapperApplicationRef>
