@@ -41,7 +41,7 @@
                 </Grid.RowDefinitions>
                 
                 <StackPanel Grid.Row="0"  >
-                    <TextBlock Name="MemberCountTextBlock"></TextBlock>
+                    <TextBox Name="MemberCountTextBlock" IsReadOnly="True" TextWrapping="Wrap"></TextBox>
                 </StackPanel>
 
                 <StackPanel Grid.Row="1">
