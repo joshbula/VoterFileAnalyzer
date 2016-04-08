@@ -10,6 +10,7 @@ E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\EPPlus.xml
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Excel.dll
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Excel.pdb
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\Reports\GroupedByCounty.rdlc
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\ICSharpCode.SharpZipLib.dll
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\Reports\MembersByParty.rdlc
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Microsoft.ReportViewer.Common.dll
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll

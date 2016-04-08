@@ -87,10 +87,20 @@ namespace VoterFileAnalyzer
 
         private async void btnImportFiles_Click(object sender, RoutedEventArgs e)
         {
+            int importedMembers;
+
             if (CheckIfAllFilesComplete())
             {
                 var progressIndicator = new Progress<string>(ReportProgress);
-                int importedMembers = await ImportMembers(progressIndicator);
+                try
+                {
+                    importedMembers = await ImportMembers(progressIndicator);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+
             }
             else
             {

@@ -36,6 +36,9 @@
       <Component Id="Excel.pdb">
         <File Source="$(var.VoterFileAnalyzer.TargetDir)Excel.pdb"></File>
       </Component>
+      <Component Id="ICSharpCode.SharpZipLib.dll">
+        <File Source="$(var.VoterFileAnalyzer.TargetDir)ICSharpCode.SharpZipLib.dll"></File>
+      </Component>
       <Component Id="Microsoft.ReportViewer.Common.dll">
         <File Source="$(var.VoterFileAnalyzer.TargetDir)Microsoft.ReportViewer.Common.dll"></File>
       </Component>
