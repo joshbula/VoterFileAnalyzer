@@ -44,3 +44,4 @@ E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Reports\MembersByParty.r
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Reports\VotesByCounty.rdlc
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
 E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\bin\Debug\ICSharpCode.SharpZipLib.dll
+E:\Source\VoterFileAnalyzer\VoterFileAnalyzer\obj\Debug\VoterFileAnalyzer.csprojResolveAssemblyReference.cache

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="*" Name="VoterFileAnalyzerSetup" Language="1033" Version="1.0.4" Manufacturer="Josh Bula" UpgradeCode="cb5fa5d2-5ba9-46d4-92a7-fe05888114e3">
+  <Product Id="*" Name="VoterFileAnalyzerSetup" Language="1033" Version="1.0.7" Manufacturer="Josh Bula" UpgradeCode="cb5fa5d2-5ba9-46d4-92a7-fe05888114e3">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
 

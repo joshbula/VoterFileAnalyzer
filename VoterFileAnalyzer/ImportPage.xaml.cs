@@ -156,11 +156,11 @@ namespace VoterFileAnalyzer
                     DataRow row = ds.Tables[0].Rows[i];
 
                     member.FMEAID = Convert.ToInt32(row[0]);
-                    member.FirstName = row["FirstName"].ToString();
-                    member.LastName = row["LastName"].ToString();
-                    member.HomeCounty = row["HomeCounty"].ToString();
-                    member.HomeCity = row["HomeCity"].ToString();
-                    member.HomeEmail = row["HomeEmail"].ToString();
+                    member.FirstName = row["FirstName"].ToString().Trim();
+                    member.LastName = row["LastName"].ToString().Trim();
+                    member.HomeCounty = row["HomeCounty"].ToString().Trim();
+                    member.HomeCity = row["HomeCity"].ToString().Trim();
+                    member.HomeEmail = row["HomeEmail"].ToString().Trim();
                     member.TotalVotes = 0;
                     member.LastElection = null;
                     Members.Add(member);
@@ -184,34 +184,50 @@ namespace VoterFileAnalyzer
                 {
                     string filename = System.IO.Path.GetFileName(file);
 
-                    using (TextReader tr = File.OpenText(file))
+                    //using (StreamReader sr = new StreamReader(file))
+                    //{
+                    //    string line;
+                    //    while ((line = sr.ReadLine()) != null)
+                    //    {
+                    //        string[] fields = line.Split('\t');
+                    foreach (var line in File.ReadLines(file))
                     {
-                        string line;
-                        while ((line = tr.ReadLine()) != null)
+                        string[] fields = line.Split('\t');
+                        string FirstName = fields[4].Trim().ToLower();
+                        string LastName = fields[2].Trim().ToLower();
+                        string HomeCity = fields[9].Trim().ToLower();
+
+                        //if (LastName.Contains("sanz") && FirstName.Contains("kath"))
+                        //{
+                        //    string Breakpoint = "";
+                        //}
+
+                        //if (LastName.Contains("reynolds") && FirstName.Contains("jeanne"))
+                        //{
+                        //    string Breakpoint = "";
+                        //}
+
+
+                        var member = Members.Where(p => p.FirstName.ToLower().Contains(FirstName) && p.LastName.ToLower().Contains(LastName) && p.HomeCity.ToLower().Contains(HomeCity)).OrderByDescending(p => p.MemberID).FirstOrDefault();
+                        if (member != null)
                         {
-                            string[] fields = line.Split('\t');
+                            member.VoterID = Convert.ToInt32(fields[1]);
+                            member.RegisteredTovote = fields[28].ToUpper() == "ACT" ? true : false;
+                            member.Party = fields[23];
 
-                            string FirstName = fields[4];
-                            string LastName = fields[2];
-                            string HomeCity = fields[9];
-
-                            var member = Members.Where(p => p.FirstName == FirstName && p.LastName == LastName && p.HomeCity == HomeCity).OrderByDescending(p => p.MemberID).FirstOrDefault();
-                            if (member != null)
+                            if (progress != null)
                             {
-                                member.VoterID = Convert.ToInt32(fields[1]);
-                                member.RegisteredTovote = fields[28] == "ACT" ? true : false;
-                                member.Party = fields[23];
-                               
-                                if (progress != null)
-                                {
-                                    progress.Report("Found Voter Match in " + filename + " - \n" + member.FirstName + " " + member.LastName);
-                                }
-
+                                progress.Report("Found Voter Match in " + filename + " - \n" + member.FirstName + " " + member.LastName);
                             }
 
                         }
 
                     }
+
+
+                    //    }
+
+                    //}
 
                 }
 
